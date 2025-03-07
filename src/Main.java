@@ -1,25 +1,30 @@
 import java.util.Scanner;
 
 public class Main {
-    public static boolean game_running = true;
+    public static boolean game_running = false;
     public static int game_width = 160;
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        while (game_running){
-            //Contents of game go here
-            System.out.println("Game loop reset");
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            Player user = new Player(50, 20 ,90, 6, 15, 600, scanner, 0, 1);
-            user.select_player_class();
-            System.out.println(user.calc_next_level());
+
+        try    {
+            Scanner scanner = new Scanner(System.in);
+            StartMenu.loadupMenu(scanner);
+            while (game_running) {
+                //Contents of game go here
+                System.out.println("Game loop reset");
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                Player user = new Player(50, 20, 90, 6, 15, 600, scanner, "", 0);
+                user.select_player_class();
+                user.level_up_check();
+            }
+        } catch (Exception e) {
+            System.out.println("Ending Game with error... bad error...");
         }
+        //Prompt for "Would you like to quit" goes here
     }
-
-
 }
 
 //Road map
