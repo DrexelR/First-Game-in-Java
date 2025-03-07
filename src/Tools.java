@@ -8,14 +8,14 @@ public class Tools {
         while (running)    {
             try {
                 for (int i = 0; i < prompts.length-1; i++) {
-                    middleAlignText(Colors.BLUE + prompts[i] + Colors.RESET);
+                    middleAlignText(Colors.BLUE + prompts[i] + Colors.RESET, true);
                 }
                 for (int i = 0; i < responses.length; i++) {
-                    leftAlignText(Colors.GREEN + (i + 1) + Colors.YELLOW + ": " + responses[i] + Colors.RESET);
-                    leftAlignText(responses[i]);
+                    leftAlignText(Colors.GREEN + (i + 1) + Colors.YELLOW + ": " + responses[i] + Colors.RESET, true);
+                    leftAlignText(responses[i], true);
                 }
                 System.out.println();
-                leftAlignText(prompts[prompts.length - 1] + ": ");
+                leftAlignText(prompts[prompts.length - 1] + ": ", false);
 
                     String inputStr = scanner.nextLine();
                     if (!inputStr.matches("-?\\d+")) {
@@ -45,8 +45,8 @@ public class Tools {
     public static boolean promptTrueFalse (String prompt, Scanner scanner) {
         boolean returnValue = false;
             while (true) {
-                middleAlignText(Colors.BLUE + prompt + Colors.RESET);
-                leftAlignText("(" + Colors.GREEN + "[Y]" + Colors.RESET + "ES/" + Colors.RED + "[N]" + Colors.RESET + "O : ");
+                middleAlignText(Colors.BLUE + prompt + Colors.RESET, true);
+                leftAlignText("(" + Colors.GREEN + "[Y]" + Colors.RESET + "ES/" + Colors.RED + "[N]" + Colors.RESET + "O : ", false);
                 String inputStr = scanner.nextLine();
                 if (!inputStr.equals("Y") && !inputStr.equals("y") && !inputStr.equals("N") && !inputStr.equals("n") && !inputStr.equals("0") && !inputStr.equals("1")) {
                     System.out.println("Input must be Y or N OR 1 or 0");
@@ -69,16 +69,28 @@ public class Tools {
 
     }
 
-    public static void leftAlignText(String text){
+    public static void leftAlignText(String text, Boolean wrap){
         int leftPadding = 40;
-        System.out.println(" ".repeat(leftPadding) + text);
+        if (wrap) {
+            System.out.println(" ".repeat(leftPadding) + text);
+        } else {
+            System.out.print(" ".repeat(leftPadding) + text);
+        }
     }
 
-    public static void middleAlignText(String text){
-        System.out.println(" ".repeat(Main.game_width/2) + text);
+    public static void middleAlignText(String text, Boolean wrap){
+        if (wrap) {
+            System.out.println(" ".repeat(Main.game_width/2) + text);
+        } else {
+            System.out.print(" ".repeat(Main.game_width/2) + text);
+        }
     }
 
-    public static void rightAlignText(String text){
-        System.out.println(" ".repeat(Math.max(0, Main.game_width-text.length())) + text);
+    public static void rightAlignText(String text, Boolean wrap){
+        if (wrap) {
+            System.out.println(" ".repeat(Math.max(0, Main.game_width-text.length())) + text);
+        } else {
+            System.out.print(" ".repeat(Math.max(0, Main.game_width-text.length())) + text);
+        }
     }
 }

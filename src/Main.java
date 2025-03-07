@@ -19,11 +19,11 @@ public class Main {
                 Player user = new Player(50, 20, 90, 6, 15, 600, scanner, "", 0);
                 user.select_player_class();
                 user.level_up_check();
+                Tools.promptEndGame(scanner);
             }
         } catch (Exception e) {
             System.out.println("Ending Game with error... bad error...");
         }
-        //Prompt for "Would you like to quit" goes here
     }
 }
 
