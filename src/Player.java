@@ -29,7 +29,7 @@ public class Player extends Character {
     public int xp_check() {
         int next_level = combat_level * combat_level * 100;
         int experience_left = next_level - experience;
-        System.out.println(experience + "/" + next_level + " experience remaining.");
+        Tools.middleAlignText(experience + "/" + next_level + " experience remaining.", true);
         return Math.max(experience_left, 0);
     }
     public void level_up_check(){

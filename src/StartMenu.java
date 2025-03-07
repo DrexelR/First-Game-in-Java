@@ -8,4 +8,5 @@ public class StartMenu {
             Main.game_running = true;
         }
     }
+    //Add character create option, maybe a character edit, select and remove option too
 }

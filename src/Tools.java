@@ -60,7 +60,7 @@ public class Tools {
             }
     }
 
-    public static void promptEndGame(Scanner scanner) throws Exception {
+    public static void promptEndGame(Scanner scanner){
            //Quit game function
                 boolean response = promptTrueFalse("Quit game? Y, N", scanner);
                 if (response) {

@@ -18,6 +18,7 @@ public class Main {
                 System.out.println();
                 Player user = new Player(50, 20, 90, 6, 15, 600, scanner, "", 0);
                 user.select_player_class();
+                Adventure.start(scanner);
                 user.level_up_check();
                 Tools.promptEndGame(scanner);
             }
